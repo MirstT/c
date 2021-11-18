@@ -4,5 +4,14 @@
  * @Author       : Mirst
  * @Date         : 2021-11-18 22:32:36
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-18 22:32:40
+ * @LastEditTime : 2021-11-18 22:38:14
  */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+    printf("test");
+    system("pause");
+    return 0;
+}
