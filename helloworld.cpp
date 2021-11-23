@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-23 05:54:37
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-23 11:05:32
+ * @LastEditTime : 2021-11-23 14:39:24
  */
 #include <iostream>
 #include <vector>
@@ -14,8 +14,8 @@ using namespace std;
 
 int main()
 {
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-    for (const string& word : msg)
+    vector<string> msg{"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
+    for (const string &word : msg)
     {
         cout << word << " ";
     }
