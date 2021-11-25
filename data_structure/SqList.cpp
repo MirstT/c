@@ -1,83 +1,115 @@
 /*
- * @Description  : 
+ * @Description  : 顺序表的静态实现
  * @version      : 
  * @Author       : Mirst
- * @Date         : 2021-11-24 08:09:08
+ * @Date         : 2021-11-25 14:17:30
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-24 15:33:52
+ * @LastEditTime : 2021-11-25 16:34:37
  */
 #include <stdio.h>
+#include <stdlib.h>
+#include <memory.h>
+#include <iostream>
 
-//静态分配
 #define MAXSIZE 10
 typedef struct
 {
     int data[MAXSIZE];
     int length;
 } SqList;
+enum SqListDesc
+{
+    NullElement = -1,
+    NullIndex = -1
+};
+void InitList(SqList &List);
+void Destroy(SqList &List);
+bool ListInsert(SqList &List, int index, int element);
+bool ListDelete(SqList &List, int index, int &deletedElement);
+int LocateElem(SqList List, int element);
+int GetElem(SqList List, int index);
+int GetLength(SqList List);
+void PrintList(SqList List);
+bool IsEmpty(SqList List);
 
 void InitList(SqList &List)
 {
-    for (int i = 0; i < MAXSIZE; i++)
-    {
-        List.data[i] = 0;
-    }
-    List.length = 0;
+    memset(&List, 0, sizeof(List));
+}
+
+void Destroy(SqList &List)
+{
+    memset(&List, 0, sizeof(List));
 }
 
 bool ListInsert(SqList &List, int index, int element)
 {
-    if (index < 0 || index > List.length || List.length >= MAXSIZE)
-    {
-        return false;
-    }
-
-    for (size_t i = List.length; i > index; i--)
-    {
-        List.data[i] = List.data[i - 1];
-    }
-    List.data[index] = element;
-    List.length++;
-    return true;
-}
-bool ListDelete(SqList &List, int index, int deletedElement)
-{
-    if (index < 0 || index >= List.length)
-    {
-        return false;
-    }
-    deletedElement = List.data[index];
-    for (size_t i = index; i < List.length - 1; i++)
-    {
-        List.data[i] = List.data[i + 1];
-    }
-    List.length--;
     return true;
 }
 
-int GetElem(SqList List,int index)
+bool ListDelete(SqList &List, int index, int &deletedElement)
 {
-    return List.data[index];
+    return true;
 }
 
-int LocateElem(SqList List,int element)
+int LocateElem(SqList List, int element)
 {
-    for (size_t i = 0; i < List.length; i++)
+    if (IsEmpty(List))
     {
-        if (List.data[i]==element)
+        return NullElement;
+    }
+
+    for (size_t i = 0; i < GetLength(List); i++)
+    {
+        if (element = GetElem(List, i))
         {
             return i;
         }
     }
-    return -1;
+    return NullElement;
+}
+
+int GetElem(SqList List, int index)
+{
+    if (IsEmpty(List) || index > GetLength(List) - 1 || index < 0)
+    {
+        return NullIndex;
+    }
+
+    return List.data[index];
+}
+
+int GetLength(SqList List)
+{
+    return List.length;
+}
+
+void PrintList(SqList List)
+{
+    if (IsEmpty(List))
+    {
+        printf("Empty!");
+        return;
+    }
+
+    for (size_t i = 0; i < GetLength(List); i++)
+    {
+        printf("List[%d]:%d\n", i, GetElem(List, i));
+    }
+}
+
+bool IsEmpty(SqList List)
+{
+    return List.length == 0 || List.length == -1;
 }
 
 int main()
 {
-    SqList L;
-    InitList(L);
-    int e = -1;
-    ListInsert(L, 3, 3);
-    ListDelete(L, 3, e);
+    SqList sqList;
+    InitList(sqList);
+    printf("IsEmpty:%d\n", IsEmpty(sqList));
+    PrintList(sqList);
+    Destroy(sqList);
+
     return 0;
 }
