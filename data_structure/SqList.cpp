@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-25 14:17:30
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-25 16:34:37
+ * @LastEditTime : 2021-11-26 08:36:05
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@
 #include <iostream>
 
 #define MAXSIZE 10
-typedef struct
+typedef struct SqList
 {
     int data[MAXSIZE];
     int length;
@@ -35,6 +35,7 @@ bool IsEmpty(SqList List);
 void InitList(SqList &List)
 {
     memset(&List, 0, sizeof(List));
+    List.length = 0;
 }
 
 void Destroy(SqList &List)
