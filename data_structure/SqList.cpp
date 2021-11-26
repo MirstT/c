@@ -1,10 +1,10 @@
 /*
  * @Description  : 顺序表的静态实现
- * @version      : 1.0.0
+ * @version      : 1.1.2
  * @Author       : Mirst
  * @Date         : 2021-11-25 14:17:30
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 11:00:54
+ * @LastEditTime : 2021-11-26 14:30:33
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,14 +12,14 @@
 #include <iostream>
 
 #define MAXSIZE 10
-typedef struct SqList
+struct SqList
 {
     int data[MAXSIZE];
     int length;
-} SqList;
+};
 enum SqListDesc
 {
-    NullElement = -1,
+    NullElement = 0,
     NullIndex = -1
 };
 void InitList(SqList &List);
@@ -96,26 +96,21 @@ bool ListDelete(SqList &List, int index, int &deletedElement)
 
 int LocateElem(SqList List, int element)
 {
-    if (IsEmpty(List))
-    {
-        return NullElement;
-    }
-
     for (size_t i = 0; i < GetLength(List); i++)
     {
-        if (element = GetElem(List, i))
+        if (element == GetElem(List, i))
         {
             return i;
         }
     }
-    return NullElement;
+    return NullIndex;
 }
 
 int GetElem(SqList List, int index)
 {
-    if (IsEmpty(List) || index > GetLength(List) - 1 || index < 0)
+    if (index >= GetLength(List) || index < 0)
     {
-        return NullIndex;
+        return NullElement;
     }
 
     return List.data[index];
@@ -142,5 +137,5 @@ void PrintList(SqList List)
 
 bool IsEmpty(SqList List)
 {
-    return List.length == 0 || List.length == -1;
+    return List.length == 0;
 }
