@@ -4,33 +4,9 @@
  * @Author       : Mirst
  * @Date         : 2021-11-25 14:17:30
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 14:30:33
+ * @LastEditTime : 2021-11-26 15:13:37
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <memory.h>
-#include <iostream>
-
-#define MAXSIZE 10
-struct SqList
-{
-    int data[MAXSIZE];
-    int length;
-};
-enum SqListDesc
-{
-    NullElement = 0,
-    NullIndex = -1
-};
-void InitList(SqList &List);
-void Destroy(SqList &List);
-bool ListInsert(SqList &List, int index, int element);
-bool ListDelete(SqList &List, int index, int &deletedElement);
-int LocateElem(SqList List, int element);
-int GetElem(SqList List, int index);
-int GetLength(SqList List);
-void PrintList(SqList List);
-bool IsEmpty(SqList List);
+#include "SqList.h"
 
 int main()
 {
