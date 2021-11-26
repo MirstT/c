@@ -1,10 +1,10 @@
 /*
  * @Description  : 顺序表的静态实现
- * @version      : 
+ * @version      : 1.0.0
  * @Author       : Mirst
  * @Date         : 2021-11-25 14:17:30
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 08:36:05
+ * @LastEditTime : 2021-11-26 11:00:54
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,6 +32,26 @@ int GetLength(SqList List);
 void PrintList(SqList List);
 bool IsEmpty(SqList List);
 
+int main()
+{
+    SqList sqList;
+    InitList(sqList);
+    printf("IsEmpty:%d\n", IsEmpty(sqList));
+    PrintList(sqList);
+    for (size_t i = 0; i < MAXSIZE; i++)
+    {
+        ListInsert(sqList, i, i + 100);
+    }
+    PrintList(sqList);
+    int deletedNum;
+    ListDelete(sqList, 3, deletedNum);
+    printf("deletedNum:%d\n", deletedNum);
+    PrintList(sqList);
+    Destroy(sqList);
+
+    return 0;
+}
+
 void InitList(SqList &List)
 {
     memset(&List, 0, sizeof(List));
@@ -45,11 +65,32 @@ void Destroy(SqList &List)
 
 bool ListInsert(SqList &List, int index, int element)
 {
+    if (index > List.length || index < 0 || index >= MAXSIZE)
+    {
+        return false;
+    }
+
+    for (size_t i = List.length; i > index; i--)
+    {
+        List.data[i] = List.data[i - 1];
+    }
+    List.data[index] = element;
+    List.length++;
     return true;
 }
 
 bool ListDelete(SqList &List, int index, int &deletedElement)
 {
+    if (index > List.length - 1 || index < 0)
+    {
+        return false;
+    }
+    deletedElement = List.data[index];
+    for (size_t i = index; i < List.length - 1; i++)
+    {
+        List.data[i] = List.data[i + 1];
+    }
+    List.length--;
     return true;
 }
 
@@ -89,7 +130,7 @@ void PrintList(SqList List)
 {
     if (IsEmpty(List))
     {
-        printf("Empty!");
+        printf("Empty!\n");
         return;
     }
 
@@ -102,15 +143,4 @@ void PrintList(SqList List)
 bool IsEmpty(SqList List)
 {
     return List.length == 0 || List.length == -1;
-}
-
-int main()
-{
-    SqList sqList;
-    InitList(sqList);
-    printf("IsEmpty:%d\n", IsEmpty(sqList));
-    PrintList(sqList);
-    Destroy(sqList);
-
-    return 0;
 }
