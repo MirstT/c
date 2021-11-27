@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-25 14:17:30
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 15:13:37
+ * @LastEditTime : 2021-11-26 16:55:18
  */
 #include "SqList.h"
 
@@ -79,14 +79,14 @@ int LocateElem(SqList List, int element)
             return i;
         }
     }
-    return NullIndex;
+    return kNullIndex;
 }
 
 int GetElem(SqList List, int index)
 {
     if (index >= GetLength(List) || index < 0)
     {
-        return NullElement;
+        return kNullElement;
     }
 
     return List.data[index];

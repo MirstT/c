@@ -4,14 +4,9 @@
  * @Author       : Mirst
  * @Date         : 2021-11-24 15:49:31
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-25 13:58:52
+ * @LastEditTime : 2021-11-26 15:26:50
  */
-#include <stdlib.h>
-typedef struct LNode
-{
-	int data;
-	struct LNode *next;
-} LNode, *LinkList;
+#include "LinkList.h"
 
 // bool InitList(LinkList &List)
 // {
@@ -26,7 +21,7 @@ bool InitList(LinkList &List)
 	{
 		return false;
 	}
-	List->next=nullptr;
+	List->next = nullptr;
 	return true;
 }
 
@@ -37,9 +32,8 @@ bool InitList(LinkList &List)
 
 bool IsEmpty(LinkList List)
 {
-	return List->next==nullptr;
+	return List->next == nullptr;
 }
-
 
 int main()
 {

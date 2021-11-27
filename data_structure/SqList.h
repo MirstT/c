@@ -4,8 +4,11 @@
  * @Author       : Mirst
  * @Date         : 2021-11-26 15:10:38
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 15:20:35
+ * @LastEditTime : 2021-11-26 15:53:06
  */
+#ifndef DATA_STRUCTURE_SQLIST_H_
+#define DATA_STRUCTURE_SQLIST_H_
+
 #include <cstdio>
 #include <cstring>
 #include "LinerList.h"
@@ -27,3 +30,5 @@ int GetElem(SqList List, int index);
 int GetLength(SqList List);
 void PrintList(SqList List);
 bool IsEmpty(SqList List);
+
+#endif
