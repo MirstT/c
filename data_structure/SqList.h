@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-26 15:10:38
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 15:53:06
+ * @LastEditTime : 2021-11-27 13:35:16
  */
 #ifndef DATA_STRUCTURE_SQLIST_H_
 #define DATA_STRUCTURE_SQLIST_H_
@@ -13,10 +13,10 @@
 #include <cstring>
 #include "LinerList.h"
 
-#define MAXSIZE 10
+constexpr int kMaxSize = 10;
 struct SqList
 {
-    int data[MAXSIZE];
+    int data[kMaxSize];
     int length;
 };
 

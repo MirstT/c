@@ -1,120 +1,19 @@
-// /*
-//  * @Description  : é¡ºåºè¡¨çš„é™æ€å®ç°
-//  * @version      : 1.1.2
-//  * @Author       : Mirst
-//  * @Date         : 2021-11-25 14:17:30
-//  * @LastEditors  : Mirst
-//  * @LastEditTime : 2021-11-27 13:33:45
-//  */
-// #include "SqList.h"
-
-// int main()
-// {
-//     SqList sqList;
-//     InitList(sqList);
-//     printf("IsEmpty:%d\n", IsEmpty(sqList));
-//     PrintList(sqList);
-//     for (size_t i = 0; i < kMaxSize; i++)
-//     {
-//         ListInsert(sqList, i, i + 100);
-//     }
-//     PrintList(sqList);
-//     int deletedNum;
-//     ListDelete(sqList, 3, deletedNum);
-//     printf("deletedNum:%d\n", deletedNum);
-//     PrintList(sqList);
-//     Destroy(sqList);
-
-//     return 0;
-// }
-
-// void InitList(SqList &List)
-// {
-//     memset(&List, 0, sizeof(List));
-//     List.length = 0;
-// }
-
-// void Destroy(SqList &List)
-// {
-//     memset(&List, 0, sizeof(List));
-// }
-
-// bool ListInsert(SqList &List, int index, int element)
-// {
-//     if (index > List.length || index < 0 || index >= kMaxSize)
-//     {
-//         return false;
-//     }
-
-//     for (size_t i = List.length; i > index; i--)
-//     {
-//         List.data[i] = List.data[i - 1];
-//     }
-//     List.data[index] = element;
-//     List.length++;
-//     return true;
-// }
-
-// bool ListDelete(SqList &List, int index, int &deletedElement)
-// {
-//     if (index > List.length - 1 || index < 0)
-//     {
-//         return false;
-//     }
-//     deletedElement = List.data[index];
-//     for (size_t i = index; i < List.length - 1; i++)
-//     {
-//         List.data[i] = List.data[i + 1];
-//     }
-//     List.length--;
-//     return true;
-// }
-
-// int LocateElem(SqList List, int element)
-// {
-//     for (size_t i = 0; i < GetLength(List); i++)
-//     {
-//         if (element == GetElem(List, i))
-//         {
-//             return i;
-//         }
-//     }
-//     return kNullIndex;
-// }
-
-// int GetElem(SqList List, int index)
-// {
-//     if (index >= GetLength(List) || index < 0)
-//     {
-//         return kNullElement;
-//     }
-
-//     return List.data[index];
-// }
-
-// int GetLength(SqList List)
-// {
-//     return List.length;
-// }
-
-// void PrintList(SqList List)
-// {
-//     if (IsEmpty(List))
-//     {
-//         printf("Empty!\n");
-//         return;
-//     }
-
-//     for (size_t i = 0; i < GetLength(List); i++)
-//     {
-//         printf("List[%d]:%d\n", i, GetElem(List, i));
-//     }
-// }
-
-// bool IsEmpty(SqList List)
-// {
-//     return List.length == 0;
-// }
+/*
+ * @Description  :
+ * @version      :
+ * @Author       : Mirst
+ * @Date         : 2022-04-27 14:51:00
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2022-04-27 14:53:17
+ */
+/*
+ * @Description  :16124278 ÍõºÆ
+ * @version      :
+ * @Author       : Mirst
+ * @Date         : 2022-04-27 14:41:46
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2022-04-27 14:50:42
+ */
 #include "stdlib.h"
 #include "stdio.h"
 #define N 39
@@ -130,7 +29,7 @@ void shoudong_maze(int m, int n)
 {
     int i, j;
     printf("\n\n");
-    printf("è¯·æŒ‰è¡Œè¾“å…¥è¿·å®«ï¼Œ0è¡¨ç¤ºé€šè·¯ï¼Œ1è¡¨ç¤ºéšœç¢:\n\n");
+    printf("Çë°´ĞĞÊäÈëÃÔ¹¬£¬0±íÊ¾Í¨Â·£¬1±íÊ¾ÕÏ°­:\n\n");
     for (i = 0; i < m; i++)
         for (j = 0; j < n; j++)
             scanf("%d", &maze[i][j]);
@@ -138,49 +37,49 @@ void shoudong_maze(int m, int n)
 void zidong_maze(int m, int n)
 {
     int i, j;
-    printf("\nè¿·å®«ç”Ÿæˆä¸­â€¦â€¦\n\n");
+    printf("\nÃÔ¹¬Éú³ÉÖĞ¡­¡­\n\n");
     system("pause");
     for (i = 0; i < m; i++)
         for (j = 0; j < n; j++)
             maze[i][j] = rand() % 2;
-    //ç”±äºrand()äº§ç”Ÿçš„éšæœºæ•°æ˜¯ä»0åˆ°RAND_MAX
-    // RAND_MAXæ˜¯å®šä¹‰åœ¨stdlib.hä¸­çš„,å…¶å€¼è‡³å°‘ä¸º32767)
-    //è¦äº§ç”Ÿä»Xåˆ°Yçš„æ•°,åªéœ€è¦è¿™æ ·å†™ï¼šk=rand()%(Y-X+1)+X;
+    //ÓÉÓÚrand()²úÉúµÄËæ»úÊıÊÇ´Ó0µ½RAND_MAX
+    // RAND_MAXÊÇ¶¨ÒåÔÚstdlib.hÖĞµÄ,ÆäÖµÖÁÉÙÎª32767)
+    //Òª²úÉú´ÓXµ½YµÄÊı,Ö»ĞèÒªÕâÑùĞ´£ºk=rand()%(Y-X+1)+X;
 }
 void print_maze(int m, int n)
 {
     int i, j;
-    printf("\nè¿·å®«ç”Ÿæˆç»“æœå¦‚ä¸‹:\n\n");
-    printf("è¿·å®«å…¥å£\n");
-    printf("â†“");
+    printf("\nÃÔ¹¬Éú³É½á¹ûÈçÏÂ:\n\n");
+    printf("ÃÔ¹¬Èë¿Ú\n");
+    printf("¡ı");
     for (i = 0; i < m; i++)
     {
         printf("\n");
         for (j = 0; j < n; j++)
         {
             if (maze[i][j] == 0)
-                printf("â–¡");
+                printf("¡õ");
             if (maze[i][j] == 1)
-                printf("â– ");
+                printf("¡ö");
         }
     }
-    printf("â†’è¿·å®«å‡ºå£\n");
+    printf("¡úÃÔ¹¬³ö¿Ú\n");
 }
 void result_maze(int m, int n)
 {
     int i, j;
-    printf("è¿·å®«é€šè·¯(ç”¨â˜†è¡¨ç¤º)å¦‚ä¸‹æ‰€ç¤ºï¼š\n\t");
+    printf("ÃÔ¹¬Í¨Â·(ÓÃ¡î±íÊ¾)ÈçÏÂËùÊ¾£º\n\t");
     for (i = 0; i < m; i++)
     {
         printf("\n");
         for (j = 0; j < n; j++)
         {
             if (maze[i][j] == 0 || maze[i][j] == 2)
-                printf("â–¡");
+                printf("¡õ");
             if (maze[i][j] == 1)
-                printf("â– ");
+                printf("¡ö");
             if (maze[i][j] == 3)
-                printf("â˜†");
+                printf("¡î");
         }
     }
 }
@@ -211,7 +110,7 @@ int mgpath(int maze[41][41], int m, int n)
     if (maze[p.row][p.col] == 1)
     {
         printf("\n===============================================\n");
-        printf("æ­¤è¿·å®«æ— è§£\n\n");
+        printf("´ËÃÔ¹¬ÎŞ½â\n\n");
         X = 0;
         return 0;
     }
@@ -234,7 +133,7 @@ int mgpath(int maze[41][41], int m, int n)
     if (p.row == m - 1 && p.col == n - 1)
     {
         printf("\n==================================================================\n");
-        printf("è¿·å®«è·¯å¾„ä¸ºï¼š\n");
+        printf("ÃÔ¹¬Â·¾¶Îª£º\n");
         printf("(%d,%d)\n", p.row, p.col);
         maze[p.row][p.col] = 3;
         while (p.predecessor != -1)
@@ -247,42 +146,42 @@ int mgpath(int maze[41][41], int m, int n)
     else
     {
         printf("\n=============================================================\n");
-        printf("æ­¤è¿·å®«æ— è§£ï¼\n\n");
+        printf("´ËÃÔ¹¬ÎŞ½â£¡\n\n");
         X = 0;
     }
     return 0;
 }
-void main()
+int main()
 {
     int i, m, n, cycle = 0;
     while (cycle != (-1))
     {
         printf("********************************************************************************\n");
-        printf("                              æ¬¢è¿è¿›å…¥è¿·å®«æ±‚è§£ç³»ç»Ÿ\n");
-        printf("                                                    è®¾è®¡è€…:é©¬å…†ç‘ï¼ˆä¿¡æ¯09-2ç­ï¼‰\n");
+        printf("                              »¶Ó­½øÈëÃÔ¹¬Çó½âÏµÍ³\n");
+        printf("                                                    16124278 ÍõºÆ\n");
         printf("********************************************************************************\n");
-        printf("                           â˜†  æ‰‹åŠ¨ç”Ÿæˆè¿·å®«  è¯·æŒ‰ï¼š1\n");
-        printf("                           â˜†  è‡ªåŠ¨ç”Ÿæˆè¿·å®«  è¯·æŒ‰ï¼š2\n");
-        printf("                           â˜†  é€€å‡º          è¯·æŒ‰ï¼š3\n\n");
+        printf("                           ¡î  ÊÖ¶¯Éú³ÉÃÔ¹¬  Çë°´£º1\n");
+        printf("                           ¡î  ×Ô¶¯Éú³ÉÃÔ¹¬  Çë°´£º2\n");
+        printf("                           ¡î  ÍË³ö          Çë°´£º3\n\n");
         printf("********************************************************************************\n");
         printf("\n");
-        printf("è¯·é€‰æ‹©ä½ çš„æ“ä½œï¼š\n");
+        printf("ÇëÑ¡ÔñÄãµÄ²Ù×÷£º\n");
         scanf("%d", &i);
         switch (i)
         {
         case 1:
-            printf("\nè¯·è¾“å…¥è¡Œæ•°ï¼š");
+            printf("\nÇëÊäÈëĞĞÊı£º");
             scanf("%d", &m);
             printf("\n");
-            printf("è¯·è¾“å…¥åˆ—æ•°ï¼š");
+            printf("ÇëÊäÈëÁĞÊı£º");
             scanf("%d", &n);
             while ((m <= 0 || m > 39) || (n <= 0 || n > 39))
             {
-                printf("\næŠ±æ­‰ï¼Œä½ è¾“å…¥çš„è¡Œåˆ—æ•°è¶…å‡ºé¢„è®¾èŒƒå›´(0-39,0-39),è¯·é‡æ–°è¾“å…¥ï¼š\n\n");
-                printf("è¯·è¾“å…¥è¡Œæ•°ï¼š");
+                printf("\n±§Ç¸£¬ÄãÊäÈëµÄĞĞÁĞÊı³¬³öÔ¤Éè·¶Î§(0-39,0-39),ÇëÖØĞÂÊäÈë£º\n\n");
+                printf("ÇëÊäÈëĞĞÊı£º");
                 scanf("%d", &m);
                 printf("\n");
-                printf("è¯·è¾“å…¥åˆ—æ•°ï¼š");
+                printf("ÇëÊäÈëÁĞÊı£º");
                 scanf("%d", &n);
             }
             shoudong_maze(m, n);
@@ -296,18 +195,18 @@ void main()
                 ;
             break;
         case 2:
-            printf("\nè¯·è¾“å…¥è¡Œæ•°ï¼š");
+            printf("\nÇëÊäÈëĞĞÊı£º");
             scanf("%d", &m);
             printf("\n");
-            printf("è¯·è¾“å…¥åˆ—æ•°ï¼š");
+            printf("ÇëÊäÈëÁĞÊı£º");
             scanf("%d", &n);
             while ((m <= 0 || m > 39) || (n <= 0 || n > 39))
             {
-                printf("\næŠ±æ­‰ï¼Œä½ è¾“å…¥çš„è¡Œåˆ—æ•°è¶…å‡ºé¢„è®¾èŒƒå›´(0-39,0-39),è¯·é‡æ–°è¾“å…¥ï¼š\n\n");
-                printf("è¯·è¾“å…¥è¡Œæ•°ï¼š");
+                printf("\n±§Ç¸£¬ÄãÊäÈëµÄĞĞÁĞÊı³¬³öÔ¤Éè·¶Î§(0-39,0-39),ÇëÖØĞÂÊäÈë£º\n\n");
+                printf("ÇëÊäÈëĞĞÊı£º");
                 scanf("%d", &m);
                 printf("\n");
-                printf("è¯·è¾“å…¥åˆ—æ•°ï¼š");
+                printf("ÇëÊäÈëÁĞÊı£º");
                 scanf("%d", &n);
             }
             zidong_maze(m, n);
@@ -325,7 +224,7 @@ void main()
             break;
         default:
             printf("\n");
-            printf("ä½ çš„è¾“å…¥æœ‰è¯¯!\n");
+            printf("ÄãµÄÊäÈëÓĞÎó!\n");
             printf("\nPress Enter Contiue!\n");
             getchar();
             while (getchar() != '\n')

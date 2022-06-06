@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-25 14:17:57
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 16:54:47
+ * @LastEditTime : 2021-11-27 13:36:22
  */
 #include "SeqList.h"
 
@@ -32,9 +32,9 @@ int main()
 
 void InitList(SeqList &List)
 {
-    List.data = new int[INITSIZE];
-    // List.data = (int *)malloc(INITSIZE*sizeof(int));
-    List.max_size = INITSIZE;
+    List.data = new int[kInitSize];
+    // List.data = (int *)malloc(kInitSize*sizeof(int));
+    List.max_size = kInitSize;
     List.length = 0;
 }
 
@@ -66,7 +66,7 @@ bool ListInsert(SeqList &List, int index, int element)
 
     if (List.length == List.max_size)
     {
-        IncreaseSize(List, INITSIZE);
+        IncreaseSize(List, kInitSize);
     }
 
     for (size_t i = List.length; i > index; --i)

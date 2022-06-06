@@ -1,131 +1,25 @@
-// /*
-//  * @Description  : 顺序表的静态实现
-//  * @version      : 1.1.2
-//  * @Author       : Mirst
-//  * @Date         : 2021-11-25 14:17:30
-//  * @LastEditors  : Mirst
-//  * @LastEditTime : 2021-11-27 13:33:45
-//  */
-// #include "SqList.h"
-
-// int main()
-// {
-//     SqList sqList;
-//     InitList(sqList);
-//     printf("IsEmpty:%d\n", IsEmpty(sqList));
-//     PrintList(sqList);
-//     for (size_t i = 0; i < kMaxSize; i++)
-//     {
-//         ListInsert(sqList, i, i + 100);
-//     }
-//     PrintList(sqList);
-//     int deletedNum;
-//     ListDelete(sqList, 3, deletedNum);
-//     printf("deletedNum:%d\n", deletedNum);
-//     PrintList(sqList);
-//     Destroy(sqList);
-
-//     return 0;
-// }
-
-// void InitList(SqList &List)
-// {
-//     memset(&List, 0, sizeof(List));
-//     List.length = 0;
-// }
-
-// void Destroy(SqList &List)
-// {
-//     memset(&List, 0, sizeof(List));
-// }
-
-// bool ListInsert(SqList &List, int index, int element)
-// {
-//     if (index > List.length || index < 0 || index >= kMaxSize)
-//     {
-//         return false;
-//     }
-
-//     for (size_t i = List.length; i > index; i--)
-//     {
-//         List.data[i] = List.data[i - 1];
-//     }
-//     List.data[index] = element;
-//     List.length++;
-//     return true;
-// }
-
-// bool ListDelete(SqList &List, int index, int &deletedElement)
-// {
-//     if (index > List.length - 1 || index < 0)
-//     {
-//         return false;
-//     }
-//     deletedElement = List.data[index];
-//     for (size_t i = index; i < List.length - 1; i++)
-//     {
-//         List.data[i] = List.data[i + 1];
-//     }
-//     List.length--;
-//     return true;
-// }
-
-// int LocateElem(SqList List, int element)
-// {
-//     for (size_t i = 0; i < GetLength(List); i++)
-//     {
-//         if (element == GetElem(List, i))
-//         {
-//             return i;
-//         }
-//     }
-//     return kNullIndex;
-// }
-
-// int GetElem(SqList List, int index)
-// {
-//     if (index >= GetLength(List) || index < 0)
-//     {
-//         return kNullElement;
-//     }
-
-//     return List.data[index];
-// }
-
-// int GetLength(SqList List)
-// {
-//     return List.length;
-// }
-
-// void PrintList(SqList List)
-// {
-//     if (IsEmpty(List))
-//     {
-//         printf("Empty!\n");
-//         return;
-//     }
-
-//     for (size_t i = 0; i < GetLength(List); i++)
-//     {
-//         printf("List[%d]:%d\n", i, GetElem(List, i));
-//     }
-// }
-
-// bool IsEmpty(SqList List)
-// {
-//     return List.length == 0;
-// }
+/*
+ * @Description  :16124278 王浩
+ * @version      :
+ * @Author       : Mirst
+ * @Date         : 2022-04-27 14:41:46
+ * @LastEditors  : Mirst
+ * @LastEditTime : 2022-04-27 14:54:11
+ */
 #include "stdlib.h"
 #include "stdio.h"
 #define N 39
 #define M 39
 int X;
 int maze[N + 2][M + 2];
+
 struct point
 {
     int row, col, predecessor;
 } queue[512];
+
 int head = 0, tail = 0;
+
 void shoudong_maze(int m, int n)
 {
     int i, j;
@@ -135,6 +29,7 @@ void shoudong_maze(int m, int n)
         for (j = 0; j < n; j++)
             scanf("%d", &maze[i][j]);
 }
+
 void zidong_maze(int m, int n)
 {
     int i, j;
@@ -147,6 +42,7 @@ void zidong_maze(int m, int n)
     // RAND_MAX是定义在stdlib.h中的,其值至少为32767)
     //要产生从X到Y的数,只需要这样写：k=rand()%(Y-X+1)+X;
 }
+
 void print_maze(int m, int n)
 {
     int i, j;
@@ -166,6 +62,7 @@ void print_maze(int m, int n)
     }
     printf("→迷宫出口\n");
 }
+
 void result_maze(int m, int n)
 {
     int i, j;
@@ -184,11 +81,13 @@ void result_maze(int m, int n)
         }
     }
 }
+
 void enqueue(struct point p)
 {
     queue[tail] = p;
     tail++;
 }
+
 struct point dequeue()
 {
     head++;
@@ -252,14 +151,14 @@ int mgpath(int maze[41][41], int m, int n)
     }
     return 0;
 }
-void main()
+int main()
 {
     int i, m, n, cycle = 0;
     while (cycle != (-1))
     {
         printf("********************************************************************************\n");
         printf("                              欢迎进入迷宫求解系统\n");
-        printf("                                                    设计者:马兆瑞（信息09-2班）\n");
+        printf("                                                    16124278 王浩\n");
         printf("********************************************************************************\n");
         printf("                           ☆  手动生成迷宫  请按：1\n");
         printf("                           ☆  自动生成迷宫  请按：2\n");

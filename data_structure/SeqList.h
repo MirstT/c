@@ -4,7 +4,7 @@
  * @Author       : Mirst
  * @Date         : 2021-11-26 15:17:24
  * @LastEditors  : Mirst
- * @LastEditTime : 2021-11-26 18:16:51
+ * @LastEditTime : 2021-11-27 13:36:26
  */
 #ifndef DATA_STRUCTURE_SEQLISH_H_
 #define DATA_STRUCTURE_SEQLISH_H_
@@ -13,7 +13,7 @@
 
 #include "LinerList.h"
 
-#define INITSIZE 10
+constexpr int kInitSize = 10;
 struct SeqList
 {
     int *data;
@@ -31,5 +31,5 @@ int GetElem(SeqList List, int index);
 
 int GetLength(const SeqList List);
 void PrintList(const SeqList List);
-
+bool IsEmpty(SeqList List);
 #endif
